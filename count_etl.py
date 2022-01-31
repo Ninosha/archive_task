@@ -21,7 +21,7 @@ def count_etl():
     size_of_dw = sys.getsizeof(dw) / 1024
     incoming_data = f'Incomming Data: {round(size_of_raw)}MB | {number_of_raw_rows} rows \n'
     dw_data = f'DW Data: {round(size_of_dw)}MB | {number_of_dw_rows} rows \n'
-    data_loss = f'Data Quality: \n {-(100 - (size_of_dw * 100) / size_of_raw)}% of Data lost in ETL'
+    data_loss = f'Data Quality: \n {-(round(100 - (size_of_dw * 100) / size_of_raw))}% of Data lost in ETL'
     f = open("ETL.txt", "w")
     f.write(incoming_data)
     f.write(dw_data)
