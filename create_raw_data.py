@@ -40,6 +40,6 @@ def create_raw_data(fetched_raw_data):
         df3.reset_index(drop=True)
         df3.to_json('PSA/raw_data.json', orient="records")
 
-    # per_second(append_to_raw_json)
+    per_second(append_to_raw_json)
 
 

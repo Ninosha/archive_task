@@ -11,6 +11,5 @@ def format_json(raw_json_url):
     df = pd.DataFrame(data)
     df = df.drop(labels=['name', 'id'], axis=1)
     df["timestamp"] = pd.to_datetime(df["timestamp"])
-
+    print(df)
     return df
-

@@ -9,7 +9,7 @@ def create_data_every_minute():
     now = datetime.datetime.now()
 
     def every_minute(func):
-        schedule.every(5).second.do(func)
+        schedule.every(1).minutes.do(func)
         while True:
             schedule.run_pending()
             time.sleep(1)
@@ -24,7 +24,7 @@ def create_data_every_minute():
             if file:
                 data = pd.read_json("PSA/raw_data.json")
                 df = pd.DataFrame(data)
-                df.to_json(f"{now.minute}.json", orient="records")
+                df.to_json(f"minute_data/{now.minute}.json", orient="records")
                 create_json(df, now.minute)
             else:
                 print("sh")

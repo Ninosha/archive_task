@@ -21,17 +21,16 @@ from count_etl import count_etl
 """
 
 RAW_JSON_URL = "/home/ninosha/Desktop/archive_task/PSA/raw_data.json"
-fetched_data = fetch_data()
-
-# request data: every second and save into raw data
-create_raw_data(fetched_raw_data=fetch_data)
+# fetched_data = fetch_data()
+#
+# # request data: every second and save into raw data
+# create_raw_data(fetched_raw_data=fetched_data)
 
 # cron(min): creat files once in minute
-create_data_every_minute()
+# create_data_every_minute()
 
 # transform json
 formated_json = format_json(raw_json_url=RAW_JSON_URL)
-
 # transform for mart and add to db
 insert_mart_to_db()
 
