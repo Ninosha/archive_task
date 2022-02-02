@@ -1,4 +1,0 @@
-Incomming Data: 25MB | 94 rows 
-DW Data: 237MB | 880 rows 
-Data Quality: 
- 845% of Data lost in ETL
