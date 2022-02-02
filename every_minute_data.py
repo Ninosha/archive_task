@@ -2,8 +2,8 @@ import datetime
 import schedule
 import time
 import pandas as pd
-from utils.json_csv_create import create_json
-
+from helper_functions.json_csv_create import create_json
+from vars import RAW_JSON_URL
 
 def create_data_every_minute():
     now = datetime.datetime.now()
@@ -14,19 +14,15 @@ def create_data_every_minute():
             schedule.run_pending()
             time.sleep(1)
 
-        # from time import time, sleep
-        # while True:
-        #     sleep(60 - time() % 60)
-        #     func()
-
     def create_file_every_minute():
-        with open("PSA/raw_data.json", "r") as file:
+        time.sleep(1)
+        with open(RAW_JSON_URL) as file:
             if file:
-                data = pd.read_json("PSA/raw_data.json")
-                df = pd.DataFrame(data)
-                df.to_json(f"minute_data/{now.minute}.json", orient="records")
-                create_json(df, now.minute)
-            else:
-                print("sh")
+                data = pd.read_json(RAW_JSON_URL)
+                create_json(data, f"DATA/minute_data/{now.minute}.json")
 
-    return every_minute(create_file_every_minute)
+    every_minute(create_file_every_minute)
+    print(f"creating file at minute{now.minute}")
+
+
+create_data_every_minute()
